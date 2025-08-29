@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+"use strict";
+
 import React, { useEffect, useState } from "react";
 import { useMFEContext } from "../context/MFEContext";
 import { Typography } from "@mui/material";

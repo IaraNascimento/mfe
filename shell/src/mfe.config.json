@@ -25,5 +25,14 @@
     "prefix": true,
     "files": ["dist/remoteEntry.iife.js"],
     "components": ["Component1", "Component2"]
+  },
+  {
+    "name": "mfed",
+    "url": "http://localhost:3004",
+    "bootstrap": "MFED",
+    "execute": false,
+    "prefix": true,
+    "files": ["remoteEntry.js"],
+    "components": ["Component1", "Component2"]
   }
 ]

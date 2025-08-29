@@ -24,3 +24,7 @@ Micro Front End
 - React 19.1.1
 - Vite 7.1.2
 - TS 5.8.3
+
+## mfed
+
+- React 15.6.2
