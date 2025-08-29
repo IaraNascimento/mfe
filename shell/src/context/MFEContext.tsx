@@ -6,41 +6,53 @@ export type MFEConfig = {
   name: string;
   url: string;
   bootstrap: string;
-  files: Array<string>;
+  execute: boolean;
+  prefix: boolean;
   components: Array<string>;
+  files: Array<string>;
 };
 
 type MFEContextType = {
-  loadedMFEsComponents: Record<string, any> | undefined;
+  loadedMFEsComponents: any;
   loadMFE: (mfe: MFEConfig) => void;
 };
 
-const MFEContext = createContext<MFEContextType | undefined>(undefined);
+const MFEContext = createContext<MFEContextType>({} as any);
 
 export const MFEProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [loadedMFEsComponents, setLoadedMFEs] = useState<any>(undefined);
+  const [loadedMFEsComponents, setLoadedMFEsComponents] = useState({});
 
   const loadMFE = async (mfe: MFEConfig) => {
     try {
-      for (const file of mfe.files) {
-        await new Promise<void>((resolve, reject) => {
-          const script = document.createElement("script");
-          script.src = `${mfe.url}/${file}`;
-          script.type = "module";
-          script.onload = () => resolve();
-          script.onerror = (err) => reject(err);
-          document.body.appendChild(script);
+      if (mfe.name) {
+        for (const file of mfe.files) {
+          await new Promise<void>((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = `${mfe.url}/${file}`;
+            script.onload = () => resolve();
+            script.onerror = (err) => reject(err);
+            document.body.appendChild(script);
+          });
+        }
+
+        const mfeGlobal = (window as any)[`${mfe.bootstrap}`];
+
+        if (mfe.execute) {
+          mfeGlobal();
+        }
+
+        const componentsMap: any = {};
+        mfe.components.forEach((Comp) => {
+          componentsMap[Comp] = mfe.prefix ? mfeGlobal[Comp] : <Comp />;
         });
+
+        setLoadedMFEsComponents((prev: any) => ({
+          ...prev,
+          [mfe.name]: componentsMap,
+        }));
       }
-
-      (window as any)[mfe.bootstrap]();
-
-      setLoadedMFEs((prev: any) => ({
-        ...prev,
-        [mfe.name]: mfe.components,
-      }));
     } catch (err) {
       console.error(`Erro ao carregar MFE ${mfe.name}:`, err);
       throw err;

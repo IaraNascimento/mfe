@@ -3,7 +3,18 @@
     "name": "mfea",
     "url": "http://localhost:3001",
     "bootstrap": "bootstrapmfea",
+    "execute": true,
+    "prefix": false,
     "files": ["runtime.js", "polyfills.js", "main.js"],
     "components": ["app-component-1", "app-component-2", "app-component-3"]
+  },
+  {
+    "name": "mfeb",
+    "url": "http://localhost:3002",
+    "bootstrap": "mfebComponents",
+    "execute": false,
+    "prefix": true,
+    "files": ["remoteEntry.js"],
+    "components": ["Component1", "Component2"]
   }
 ]

@@ -11,20 +11,19 @@ export default function Menu() {
         Login
       </Button>
 
-      <Button color="inherit" component={Link} to="/welcome">
-        Boas-vindas
-      </Button>
-
-      {/* {(loadedMFEsComponents?["mfea"] || loadedMFEsComponents?["mfe-b"] || loadedMFEsComponents?["mfe-c"]) &&
+      {(!!loadedMFEsComponents["mfea"] ||
+        !!loadedMFEsComponents["mfeb"] ||
+        !!loadedMFEsComponents["mfec"]) && (
         <Button color="inherit" component={Link} to="/welcome">
           Boas-vindas
         </Button>
-      }
-      {loadedMFEsComponents?["mfe-d"] && (
+      )}
+
+      {!!loadedMFEsComponents["mfed"] && (
         <Button color="inherit" component={Link} to="/main">
           Principal
         </Button>
-      )} */}
+      )}
     </>
   );
 }
