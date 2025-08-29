@@ -1,0 +1,9 @@
+[
+  {
+    "name": "mfea",
+    "url": "http://localhost:3001",
+    "bootstrap": "bootstrapmfea",
+    "files": ["runtime.js", "polyfills.js", "main.js"],
+    "components": ["app-component-1", "app-component-2", "app-component-3"]
+  }
+]
