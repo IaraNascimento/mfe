@@ -16,5 +16,14 @@
     "prefix": true,
     "files": ["remoteEntry.js"],
     "components": ["Component1", "Component2"]
+  },
+  {
+    "name": "mfec",
+    "url": "http://localhost:3003",
+    "bootstrap": "mfec",
+    "execute": false,
+    "prefix": true,
+    "files": ["dist/remoteEntry.iife.js"],
+    "components": ["Component1", "Component2"]
   }
 ]

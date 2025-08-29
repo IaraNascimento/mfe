@@ -11,9 +11,10 @@ export default function Welcome() {
   const [Comp3, setComp3] = useState<any>();
   const [Comp4, setComp4] = useState<any>();
   const [Comp5, setComp5] = useState<any>();
+  const [Comp6, setComp6] = useState<any>();
+  const [Comp7, setComp7] = useState<any>();
 
   useEffect(() => {
-    console.log({ loadedMFEsComponents });
     if (loadedMFEsComponents && loadedMFEsComponents["mfea"]) {
       setComp1(loadedMFEsComponents["mfea"]["app-component-1"]);
       setComp2(loadedMFEsComponents["mfea"]["app-component-2"]);
@@ -22,6 +23,10 @@ export default function Welcome() {
     if (loadedMFEsComponents && loadedMFEsComponents["mfeb"]) {
       setComp4(loadedMFEsComponents["mfeb"]["Component1"]);
       setComp5(loadedMFEsComponents["mfeb"]["Component2"]);
+    }
+    if (loadedMFEsComponents && loadedMFEsComponents["mfec"]) {
+      setComp6(loadedMFEsComponents["mfec"]["Component1"]);
+      setComp7(loadedMFEsComponents["mfec"]["Component2"]);
     }
   }, [loadedMFEsComponents]);
 
@@ -37,6 +42,10 @@ export default function Welcome() {
       {!!Comp4 && Comp4}
       <br />
       {!!Comp5 && Comp5}
+      <br />
+      {!!Comp6 && Comp6}
+      <br />
+      {!!Comp7 && Comp7}
     </div>
   );
 }

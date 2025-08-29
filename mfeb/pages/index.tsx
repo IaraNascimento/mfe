@@ -6,8 +6,6 @@ import Component2 from "../components/Component2/Component2";
 export default function Index() {
   return (
     <>
-      Home - root
-      <br />
       <Component1 />
       <br />
       <Component2 />
