@@ -1,6 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+"use strict";
+
 import { createRoot } from "react-dom/client";
+
 import { MFEProvider } from "./context/MFEContext.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 import App from "./App.tsx";
 
 import React from "react";
@@ -11,6 +14,8 @@ import ReactDOM from "react-dom";
 
 createRoot(document.getElementById("root")!).render(
   <MFEProvider>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </MFEProvider>
 );
