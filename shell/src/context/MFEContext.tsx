@@ -45,7 +45,7 @@ export const MFEProvider: React.FC<{ children: React.ReactNode }> = ({
 
         const componentsMap: any = {};
         mfe.components.forEach((Comp) => {
-          componentsMap[Comp] = mfe.prefix ? mfeGlobal[Comp] : <Comp />;
+          componentsMap[Comp] = mfe.prefix ? () => mfeGlobal[Comp] : Comp;
         });
 
         setLoadedMFEsComponents((prev: any) => ({
